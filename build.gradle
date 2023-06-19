@@ -1,5 +1,5 @@
 plugins {
-    id 'fabric-loom' version '1.2-SNAPSHOT'
+    id 'org.quiltmc.loom' version '1.2+'
     id 'maven-publish'
 }
 
@@ -32,12 +32,14 @@ repositories {
 
     maven {
         name = "TerraformersMC"
-        url = "https://maven.terraformersmc.com/"
+        url = "https://maven.terraformersmc.com/releases"
     }
     maven {
         name = "Ladysnake Libs"
         url = "https://ladysnake.jfrog.io/artifactory/mods"
     }
+
+    maven { url "https://maven.shedaniel.me/" }
 }
 
 loom {
@@ -60,24 +62,28 @@ sourceSets {
     main {
         resources {
             srcDirs += [
-                    'src/main/generated'
+                'src/main/generated',
             ]
         }
     }
 }
+
 dependencies {
     // To change the versions see the gradle.properties file
     minecraft "com.mojang:minecraft:${project.minecraft_version}"
-    mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
-    modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+    mappings "org.quiltmc:quilt-mappings:${project.quilt_mappings}:intermediary-v2"
+    modImplementation "org.quiltmc:quilt-loader:${project.loader_version}"
 
-    // Fabric API. This is technically optional, but you probably want it anyway.
-    modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+    // Quilted Fabric API.
+    modImplementation "org.quiltmc.quilted-fabric-api:quilted-fabric-api:${project.quilted_fabric_version}"
     
     // For config and registry amongst other things
     // https://docs.wispforest.io/owo/setup/
     modImplementation "io.wispforest:owo-lib:${project.owo_lib_version}"
-    annotationProcessor "io.wispforest:owo-lib:${project.owo_lib_version}"
+    // annotationProcessor "io.wispforest:owo-lib:${project.owo_lib_version}" // Until visual studio code can fix the annotation issue this will not be used
+
+    modApi("me.shedaniel.cloth:cloth-config-fabric:${project.cloth_config_version}")
+    modApi("com.terraformersmc:modmenu:${project.mod_menu_version}")
 
     // For Player Abilities
     modImplementation "io.github.ladysnake:PlayerAbilityLib:${pal_version}"

@@ -1,0 +1,74 @@
+{
+    "$schema": "https://raw.githubusercontent.com/QuiltMC/quilt-json-schemas/main/quilt.mod.json/schemas/main.json",
+    "schema_version": 1,
+    "quilt_loader": {
+        "group": "com.waterwolfies",
+        "id": "summer-mod",
+        "version": "${version}",
+        "metadata": {
+            "name": "Summer Mod",
+            "description": "This is an example description! Tell everyone what your mod is about!",
+            "license": "MIT",
+            "contact": {
+                "homepage": "https://waterwolfies.com",
+                "sources": "https://github.com/waterwolf9910/summer-mod"
+            },
+            "contributors": {
+                "Waterwolf9910": ["Owner", "Maintainer"]
+            },
+            "icon": "assets/summer-mod/icon.png"
+        },
+        "intermediate_mappings": "net.fabricmc:intermediary",
+        "entrypoints": {
+            "init": [
+                "com.waterwolfies.summer_mod.Mod"
+            ],
+            "fabric-datagen": [
+                "com.waterwolfies.summer_mod.ModDataGenerator"
+            ],
+            "modmenu": [
+                "com.waterwolfies.summer_mod.config.client.ModMenuIntegration"
+            ]
+        },
+        "depends": [
+            {
+                "id": "quilt_loader",
+                "versions": ">=0.19.1"
+            },
+            {
+                "id": "quilted_fabric_api",
+                "versions": ">=0.19.1"
+            },
+            {
+                "id": "minecraft",
+                "versions": "~1.20"
+            },
+            {
+                "id": "java",
+                "versions": ">=17"
+            },
+            {
+                "id": "owo-lib",
+                "versions": ">=0.11.0+1.20"
+            },
+            {
+                "id": "trinkets",
+                "versions": ">=3.7.0"
+            },
+            {
+                "id": "modmenu",
+                "versions": "*",
+                "environment": "client",
+                "optional": true
+            }
+        ]
+    },
+    "minecraft": {
+        "environment": "*"
+    },
+
+    "mixin": [
+        "summer-mod.mixins.json"
+    ]
+    
+}

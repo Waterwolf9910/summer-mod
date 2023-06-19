@@ -1,0 +1,14 @@
+package com.waterwolfies.summer_mod.config.common;
+
+import com.waterwolfies.summer_mod.Mod;
+import io.wispforest.owo.config.annotation.Config;
+import io.wispforest.owo.config.annotation.Modmenu;
+
+// @Config(name = "main_config", wrapperName = "MainConfig")
+@Config(name = "main_config", wrapperName = "MainConfig")
+@Modmenu(modId = Mod.MODID)
+public class MainConfigModel {
+
+    public int c = 9;
+    public String b = "Hello";
+}
